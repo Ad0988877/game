@@ -3,7 +3,7 @@ session_start();
 
 // Check if the user is logged in
 if (!isset($_SESSION['username'])) {
-    header('Location: index.php'); // Redirect to login if not logged in
+    header('Location: index.php'); 
     exit;
 }
 
@@ -18,7 +18,7 @@ $games = array_map('str_getcsv', file('games.csv'));
     <title>Video Game Display</title>
 </head>
 <body>
-    <?php include 'header.php'; ?> <!-- Include header -->
+    <?php include 'header.php'; ?> 
     
     <h1>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
     <h2>Video Games</h2>

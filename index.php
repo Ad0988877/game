@@ -1,8 +1,7 @@
 <?php
-session_start(); // Start a session for user management
+session_start(); 
 $errorMessage = '';
 
-// Check if the form has been submitted
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
@@ -13,9 +12,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $credentials = array_map('str_getcsv', file('users.csv'));
         $valid = false;
 
-        // Debugging: Check if the file is being read correctly
         foreach ($credentials as $cred) {
-            echo "Checking: Username: " . $cred[0] . ", Password: " . $cred[1] . "<br>"; // Debugging line
+            echo "Checking: Username: " . $cred[0] . ", Password: " . $cred[1] . "<br>"; 
             if (trim($cred[0]) == trim($username) && trim($cred[1]) == trim($password)) {
                 $valid = true;
                 break;
@@ -23,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
 
         if ($valid) {
-            $_SESSION['username'] = $username; // Set session variable
+            $_SESSION['username'] = $username;
             header('Location: games.php'); 
             exit;
         } else {
@@ -40,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Login</title>
 </head>
 <body>
-    <?php include 'header.php'; ?> <!-- Include header -->
+    <?php include 'header.php'; ?>
     
     <h1>Login</h1>
 
