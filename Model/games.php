@@ -8,7 +8,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 // Read video game data from CSV
-$games = array_map('str_getcsv', file('games.csv'));
+$games = array_map('str_getcsv', file('View/games.csv'));
 ?>
 
 <!DOCTYPE html>
